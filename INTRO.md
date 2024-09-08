@@ -43,8 +43,6 @@ Rendez-vous sur votre navigateur à l'adresse `http://localhost:8000/home` et vo
 
 Dans le template (la vue), vous allez modifier son contenu avec celui-ci :
 
-```
-# src/templates/home/index.html.twig
 {% extends 'base.html.twig' %}
 
 {% block title %}Landing Page{% endblock %}
@@ -64,7 +62,7 @@ Dans le template (la vue), vous allez modifier son contenu avec celui-ci :
         </div>
     </main>
 {% endblock %}
-```
+
 
 ---
 
