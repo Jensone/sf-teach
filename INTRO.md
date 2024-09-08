@@ -20,7 +20,7 @@ Pour lancer le serveur web, il faut exécuter la commande suivante dans votre te
 symfony serve
 ```
 
-Si la commande `symfony serve` n'est pas reconnue, opter pour la commande suivante :
+Si la commande `symfony serve` n'est pas reconnue, optez pour la commande suivante :
 
 ```bash
 php -S localhost:8000 -t public public/index.php
