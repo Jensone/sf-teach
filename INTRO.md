@@ -64,7 +64,6 @@ Dans le template (la vue), vous allez modifier son contenu avec celui-ci :
         </div>
     </main>
 {% endblock %}
-
 ```
 
 ---
@@ -144,18 +143,13 @@ class HomeController extends AbstractController
 
 2. Bouclez sur les données de la base de données pour afficher les noms et prénoms.
 
-```twig
+```
 # src/templates/setting/index.html.twig
-
 {% extends 'base.html.twig' %}
-
 //...
-
 {% block body %}
     <main class="bg-gradient-to-r from-neutral-50 to-neutral-100 h-screen flex flex-col items-center justify-center">
-        
         //...
-
         <ul class="mt-4 text-neutral-500 flex flex-wrap gap-4 max-w-md mx-auto">
             {% for person in people %}
                 <li class="px-2 py-1 mb-2 rounded-full bg-orange-300 text-neutral-800 text-center">
@@ -165,7 +159,6 @@ class HomeController extends AbstractController
         </ul>
     </main>
 {% endblock %}
-
 ```
 
 Allez voir le résultat sur votre navigateur à l'adresse `http://localhost:8000/`.
