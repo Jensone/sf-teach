@@ -26,50 +26,6 @@ Si la commande `symfony serve` n'est pas reconnue, optez pour la commande suivan
 php -S localhost:8000 -t public public/index.php
 ```
 
-## Créer une base de données
-
-Pour créer une base de données, il faut exécuter la commande suivante dans votre terminal :
-
-```bash
-php bin/console doctrine:database:create
-```
-
-Il s'agit d'une base de données SQLite. C'est un fichier qui a été créé dans le dossier `/var/data.db`.
-
-## Créer les tables
-
-Pour créer les tables, ça se passe en deux étapes :
-
-1. Exécuter la commande suivante dans votre terminal : `php bin/console make:migration`
-2. Puis, exécuter la commande suivante dans votre terminal : `php bin/console doctrine:migrations:migrate`
-
-La première commande va créer un fichier dans le dossier `src/Migrations` qui contient les migrations. C'est un fichier qui contient des instructions SQL pour mettre à jour la base de données.
-
-La deuxième commande va exécuter les migrations. Cela veut dire que chaque instruction SQL dans le fichier du dossier `src/Migrations` sera exécutée.
-
-## Remplir la base de données
-
-Pour remplir la base de données, il faut exécuter la commande suivante dans votre terminal :
-
-```bash
-php bin/console doctrine:fixtures:load
-```
-
-Cela va charger les données fictives dans la base de données.
-
-*Note : Si le nom qui s'affiche sur votre page plus tard pour la première fois est Rebecca, vous avez gagnez une clé API d'OpenAI pour utiliser le service de génération de texte dans vos commits pendant un mois.*
-
----
-
-Pause commit : enregistrez ce que vous avez fait jusqu'à maintenant.
-
-```bash
-git add .
-git commit -m "Ajout de la base de données"
-```
-
----
-
 ## Créer une page
 
 Pour créer une page, nous avons besoin d'un contrôleur et d'une vue. Pour cela, il faut exécuter la commande suivante dans votre terminal :
@@ -87,13 +43,13 @@ Rendez-vous sur votre navigateur à l'adresse `http://localhost:8000/home` et vo
 
 Dans le template (la vue), vous allez modifier son contenu avec celui-ci :
 
-```twig
+```
 {% extends 'base.html.twig' %}
 
 {% block title %}Landing Page{% endblock %}
 
 {% block body %}
-    <main class="bg-gradient-to-r from-neutral-50 to-neutral-100 h-screen flex items-center justify-center">
+    <main class="bg-gradient-to-r from-neutral-50 to-neutral-100 h-screen flex flex-col items-center justify-center">
         <div class="text-center">
             <h1 class="text-5xl font-bold text-neutral-800">
                 Welcome to my Landing Page
@@ -125,20 +81,18 @@ git commit -m "Mise à jour du template de la page Home"
 "Nobody" est le nom par défaut. Modifiez-le sans toucher au code du template. Pour cela, on passe par le controlleur `HomeController.php`.
 
 ```php
-
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
     #[Route('/{name}', name: 'home', methods: ['GET'])] // Ceci est une annotation PHP, ici elle permet de définir une route pour le contrôleur et ses paramètres.
-    public function index(Request $request, string $name): Response // Ceci est le contrôleur qui va être appelé lorsque l'utilisateur accède à la page '/'
+    public function index(): Response // Ceci est le contrôleur qui va être appelé lorsque l'utilisateur accède à la page '/'
     {
-        $name = $request->query->get('name'); // À l'aide de la classe Request de HttpFoundation, on peut récupérer les paramètres de la route.
+        $name = ''; // Nous allons l'envoyer à la vue.
         return $this->render('home/index.html.twig', [ // La méthode render() de la classe AbstractController permet de renvoyer un template avec des données.
             'name' => $name ?? 'Nobody', // Si le paramètre n'est pas renseigné, on lui donne un nom par défaut.
         ]);
@@ -146,7 +100,7 @@ class HomeController extends AbstractController
 }
 ```
 
-Rendez-vous sur votre navigateur à l'adresse `http://localhost:8000/` et ajoutez votre prénom à la fin de l'URL.
+Rendez-vous sur votre navigateur à l'adresse `http://localhost:8000/`.
 
 ---
 
@@ -171,13 +125,13 @@ namespace App\Controller;
 
 class HomeController extends AbstractController
 {
-    #[Route('/{name}', name: 'home', methods: ['GET'])] 
-    public function index(Request $request, string $name, PersonRepository $personRepository): Response // On ajoute un paramètre supplémentaire pour récupérer les données de la base de données.
+    #[Route('/', name: 'home', methods: ['GET'])] // Ceci est une annotation PHP, ici elle permet de définir une route pour le contrôleur et ses paramètres.
+    public function index(PersonRepository $pr): Response // Ceci est le contrôleur qui va être appelé lorsque l'utilisateur accède à la page '/'
     {
-        $name = $request->query->get('name'); 
-        return $this->render('home/index.html.twig', [ 
-            'name' => $name ?? 'Nobody', 
-            'people' => $personRepository->findAll(), // On récupère toutes les personnes de la base de données et les envoie à la vue.
+        $name = 'Alex'; // À l'aide de la classe Request de HttpFoundation, on peut récupérer les paramètres de la route.
+        return $this->render('setting/index.html.twig', [ // La méthode render() de la classe AbstractController permet de renvoyer un template avec des données.
+            'name' => $name ?? 'Nobody', // Si le paramètre n'est pas renseigné, on lui donne un nom par défaut.
+            'people' => $pr->findAll(), // On récupère tous les personnages dans la base de données.
         ]);
     }
 }
@@ -185,25 +139,29 @@ class HomeController extends AbstractController
 
 2. Bouclez sur les données de la base de données pour afficher les noms et prénoms.
 
-```twig
+```
 {% extends 'base.html.twig' %}
 
 //...
 
 {% block body %}
-    <main class="bg-gradient-to-r from-neutral-50 to-neutral-100 h-screen flex items-center justify-center">
+    <main class="bg-gradient-to-r from-neutral-50 to-neutral-100 h-screen flex flex-col items-center justify-center">
         
         //...
 
-        <ul class="mt-4 text-xl text-neutral-500">
+        <ul class="mt-4 text-neutral-500 flex flex-wrap gap-4 max-w-md mx-auto">
             {% for person in people %}
-                <li>{{ person.firstName }} {{ person.lastName }}</li>
+                <li class="px-2 py-1 mb-2 rounded-full bg-orange-300 text-neutral-800 text-center">
+                    {{ person.name }} {{ person.lastName }}
+                </li>
             {% endfor %}
         </ul>
     </main>
 {% endblock %}
 
 ```
+
+Allez voir le résultat sur votre navigateur à l'adresse `http://localhost:8000/`.
 
 ---
 
