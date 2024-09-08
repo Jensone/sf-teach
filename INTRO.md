@@ -144,7 +144,7 @@ class HomeController extends AbstractController
 
 2. Bouclez sur les données de la base de données pour afficher les noms et prénoms.
 
-```
+```twig
 # src/templates/setting/index.html.twig
 
 {% extends 'base.html.twig' %}
