@@ -44,7 +44,7 @@ Rendez-vous sur votre navigateur à l'adresse `http://localhost:8000/home` et vo
 Dans le template (la vue), vous allez modifier son contenu avec celui-ci :
 
 ```
-
+# src/templates/home/index.html.twig
 {% extends 'base.html.twig' %}
 
 {% block title %}Landing Page{% endblock %}
@@ -83,6 +83,7 @@ git commit -m "Mise à jour du template de la page Home"
 "Nobody" est le nom par défaut. Modifiez-le sans toucher au code du template. Pour cela, on passe par le controlleur `HomeController.php`.
 
 ```php
+# src/Controller/HomeController.php
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -100,6 +101,7 @@ class HomeController extends AbstractController
         ]);
     }
 }
+
 ```
 
 Rendez-vous sur votre navigateur à l'adresse `http://localhost:8000/`.
@@ -109,6 +111,7 @@ Rendez-vous sur votre navigateur à l'adresse `http://localhost:8000/`.
 Pause commit : enregistrez ce que vous avez fait jusqu'à maintenant.
 
 ```bash
+# Dans le terminal de commande
 git add .
 git commit -m "Récupération des paramètres de la route et renvoi du template avec les données"
 ```
@@ -120,7 +123,7 @@ Il y a une liste de prénoms et noms de personnes dans la base de données. Vous
 1. Mettez à jour le contrôleur `HomeController.php` pour qu'il récupère les données de la base de données.
 
 ```php
-
+# src/Controller/HomeController.php
 namespace App\Controller;
 
 // ...
@@ -142,6 +145,8 @@ class HomeController extends AbstractController
 2. Bouclez sur les données de la base de données pour afficher les noms et prénoms.
 
 ```
+# src/templates/setting/index.html.twig
+
 {% extends 'base.html.twig' %}
 
 //...
