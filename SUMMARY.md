@@ -5,4 +5,5 @@
 * [Le projet CodeXpress](03.md)
 * [Algorithmes de CodeXpress](04.md)
 * [Création de l'application](05.md)
-* [Les migrations](06.md)
+* [Que faire des non "nullable" ?](06.md)
+* [Les migrations](07.md)
