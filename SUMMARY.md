@@ -7,3 +7,4 @@
 * [Création de l'application](05.md)
 * [Que faire des non "nullable" ?](06.md)
 * [Les migrations](07.md)
+* [Les fixtures](08.md)
