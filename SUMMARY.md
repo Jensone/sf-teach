@@ -1,6 +1,5 @@
 # Sommaire
 
-* [Introduction](INTRO.md)
 * [Environnement de développement](01.md)
 * [Création d'un projet Symfony](02.md)
 * [Le projet CodeXpress](03.md)
