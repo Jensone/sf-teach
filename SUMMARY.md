@@ -13,4 +13,5 @@
 * [Les templates Twig](11.md)
 * [Installation de Tailwind CSS](12.md)
 * [Les extensions Twig](14.md)
+* [API Platform](api-platform.md)
 * [TP 1 - Clôturé](tp-1.md)
