@@ -17,3 +17,4 @@
 * [L'inscription et la connexion](16.md)
 * [Gestion des images](17.md)
 * [API Platform](api-platform.md)
+* [Legacy](legacy.md)
