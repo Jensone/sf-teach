@@ -17,5 +17,5 @@
 * [L'inscription et la connexion](16.md)
 * [Gestion des images](17.md)
 * [API Platform](api-platform.md)
-* [🚨 Emergency 🚨](emergency.md)
+* [🚨 Emergency](emergency.md)
 * [Legacy](legacy.md)
