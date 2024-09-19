@@ -1,6 +1,5 @@
 # Sommaire
 
-* [TP2 - 19/09/2024](tp-2.md)
 * [Environnement de développement](01.md)
 * [Création d'un projet Symfony](02.md)
 * [Le projet CodeXpress](03.md)
@@ -13,10 +12,11 @@
 * [Les contrôleurs en détail](10.md)
 * [Les templates Twig](11.md)
 * [Installation de Tailwind CSS](12.md)
-* [Les extensions Twig](14.md)
-* [Les formulaires](15.md)
-* [L'inscription et la connexion](16.md)
-* [Gestion des images](17.md)
+* [Les extensions Twig](13.md)
+* [Les formulaires](14.md)
+* [L'inscription et la connexion](15.md)
+* [Gestion des images](16.md)
+* [Mettre en place le cache](17.md)
 * [API Platform](api-platform.md)
 * [🚨 Emergency](emergency.md)
 * [Legacy](legacy.md)
