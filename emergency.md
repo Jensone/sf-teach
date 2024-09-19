@@ -2,7 +2,7 @@
 description: Comment faire si je suis en galère ?
 ---
 
-## Problème avec la BDD
+## Problèmes avec la BDD
 
 Procédure de résolution avec la BDD :
 
@@ -35,4 +35,10 @@ Lancer les fixtures
 ```bash
 symfony console d:f:l -n
 ```
+
+---
+
+## Problème avec l'installation d'un package
+
+Procédure de résolution :
 
