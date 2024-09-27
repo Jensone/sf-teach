@@ -17,6 +17,7 @@
 * [L'inscription et la connexion](15.md)
 * [Gestion des images](16.md)
 * [Mettre en place le cache](17.md)
+* [Déploiement](deployment.md)
 * [API Platform](api-platform.md)
 * [🚨 Emergency](emergency.md)
 * [Legacy](legacy.md)
