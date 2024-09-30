@@ -1,6 +1,4 @@
----
-description: Comment faire si je suis en galère ?
----
+# Comment faire si je suis en galère ?
 
 ## Problèmes avec la BDD
 
@@ -37,8 +35,3 @@ symfony console d:f:l -n
 ```
 
 ---
-
-## Problème avec l'installation d'un package
-
-Procédure de résolution :
-

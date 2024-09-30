@@ -1,6 +1,4 @@
----
-description: Comment déployer son projet dans l'espace 🚀
----
+# Comment déployer son projet dans l'espace 🚀
 
 Ce n'est pas parce que l'application est terminée qu'elle est en ligne. Il faut la déployer sur un serveur de production.
 

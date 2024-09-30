@@ -1,6 +1,4 @@
----
-description: Legacy signifie "Héritage" dans le sens de "Ancien"
----
+# Legacy signifie "Héritage" dans le sens de "Ancien"
 
 ## TP1
 

@@ -1,6 +1,4 @@
----
-description: La création d'une API avec Symfony
----
+# La création d'une API avec Symfony
 
 # Créer une API
 
